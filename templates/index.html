@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algerian Forest Fire Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 1rem;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .parameters {
+            margin: 1rem 0;
+        }
+        .parameters ul {
+            list-style: none;
+            padding: 0;
+        }
+        .parameters li {
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        form {
+            margin: 2rem 0;
+        }
+        form input, form button {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Algerian Forest Fire Predictor
+    </header>
+    <div class="container">
+        <h2>Introduction</h2>
+        <p>
+            Welcome to the Algerian Forest Fire Predictor application. This tool helps predict the Forest Fire Weather Index (FWI), 
+            which is a crucial measure in assessing the likelihood and severity of forest fires. The application uses several key parameters 
+            to provide an accurate prediction.
+        </p>
+
+        <h2>About the Parameters</h2>
+        <div class="parameters">
+            <ul>
+                <li>Temperature: Air temperature in Celsius.</li>
+                <li>RH: Relative Humidity in percentage.</li>
+                <li>Ws: Wind speed in km/h.</li>
+                <li>Rain: Amount of rainfall in mm.</li>
+                <li>FFMC: Fine Fuel Moisture Code - Indicates surface litter moisture.</li>
+                <li>DMC: Duff Moisture Code - Indicates moisture of moderately deep organic layers.</li>
+                <li>ISI: Initial Spread Index - Represents fire spread potential.</li>
+                <li>Classes: Fire severity classes or fire category levels.</li>
+                <li>Region: Location-based forest fire region.</li>
+                <li>FWI: Final Forest Weather Index value.</li>
+            </ul>
+        </div>
+
+        <h2>Enter Parameters</h2>
+        <form method="POST" action="{{url_for('predict_datapoint')}}">
+            <!-- You can dynamically fill up these input fields in your backend -->
+            <!-- Example input fields for you to customize -->
+            <input type="text" name="Temperature" placeholder="Enter Temperature (C)" required="required">
+            <input type="text" name="RH" placeholder="Enter Relative Humidity (%)" required="required">
+            <input type="text" name="Ws" placeholder="Enter Wind Speed (km/h)" required="required">
+            <input type="text" name="Rain" placeholder="Enter Rainfall (mm)" required="required">
+            <input type="text" name="FFMC" placeholder="Enter FFMC Value" required="required">
+            <input type="text" name="DMC" placeholder="Enter DMC Value" required="required">
+            <input type="text" name="ISI" placeholder="Enter ISI Value" required="required">
+            <input type="text" name="Classes" placeholder="Enter Fire Class" required="required">
+            <input type="text" name="Region" placeholder="Enter Region" required="required">
+
+            <button type="submit" class="button">Predict FWI</button>
+        </form>
+        <div id="result">
+            {% if results is not none %}
+                <h2>Prediction Result</h2>
+                <p style="font-size: 1.5rem; font-weight: bold; color: #4CAF50;">
+                    The Forest Weather Index (FWI) is: {{ results }}
+                </p>
+            {% endif %}
+        </div>        
+</body>
+</html>
