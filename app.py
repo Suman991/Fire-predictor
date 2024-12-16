@@ -6,7 +6,7 @@ import pandas as pd
 import pickle
 import os
 
-application=Flask(__name__)
+app=Flask(__name__)
 
 
 # unpickle Ridge Regressor and Standard scaler pickle file
@@ -22,7 +22,7 @@ scaler_path = os.path.join('model', 'scaler.pkl')
 ridge_model = pickle.load(open(ridge_model_path, 'rb'))
 standard_scaler = pickle.load(open(scaler_path, 'rb'))
 
-@application.route('/',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='POST':
         Temperature=float(request.form.get('Temperature'))
@@ -47,4 +47,4 @@ def predict_datapoint():
         
 
 if __name__=='__main__':
-    application.run(debug=True)
+    app.run(debug=True)
