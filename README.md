@@ -104,7 +104,7 @@ project-root/
 ## Future Enhancements
 - Improve the UI for better user experience.
 - Implement additional ML models for comparison.
-- Deploy the application using cloud services (AWS, Heroku, etc.).
+  
 
 ---
 ## Author
