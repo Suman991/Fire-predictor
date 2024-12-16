@@ -4,15 +4,23 @@ from sklearn.linear_model import Ridge
 import numpy as np
 import pandas as pd
 import pickle
-
+import os
 
 application=Flask(__name__)
 
 
 # unpickle Ridge Regressor and Standard scaler pickle file
-ridge_model=pickle.load(open(r'model\ridge.pkl','rb'))
-standard_scaler=pickle.load(open(r'model\scaler.pkl','rb'))
+# ridge_model=pickle.load(open(r'model\ridge.pkl','rb'))
+# standard_scaler=pickle.load(open(r'model\scaler.pkl','rb'))
 
+
+# Define model paths using os.path.join
+ridge_model_path = os.path.join('model', 'ridge.pkl')
+scaler_path = os.path.join('model', 'scaler.pkl')
+
+# Load the model and scaler
+ridge_model = pickle.load(open(ridge_model_path, 'rb'))
+standard_scaler = pickle.load(open(scaler_path, 'rb'))
 
 @application.route('/',methods=['GET','POST'])
 def predict_datapoint():
