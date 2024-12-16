@@ -39,8 +39,8 @@ Follow these steps to set up the project:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-repository/algerian-forest-fire-predictor.git
-cd algerian-forest-fire-predictor
+git clone https://github.com/Suman991/Fire-predictor.git
+cd Fire-predictor
 ```
 
 ### 2. Install Dependencies
